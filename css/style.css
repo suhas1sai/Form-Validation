@@ -1,65 +1,32 @@
-body{
-
-	font-size: 16px;
-	background: #00e0fe;
-	font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-}
-h2{
-	text-align: center;
-	text-decoration: underline;
-}
-form{
-	background-image: url(assets/images/art.gif);
-	width: 400px;
-	background: #fff;
-	padding: 15px 40px 40px;
-	border: 1px solid #ccc;
-	margin: 50px auto 0;
-	border-radius: 5px;
-}
-label{
-	display: block;
-	margin-bottom: 5px;
-}
-label i{
-	color: #999;
-	font-size: 80%;
-}
-input, select{
-	border: 1px solid #ccc;
-	padding: 10px;
-	display: block;
-	width: 100%;
+*{
 	box-sizing: border-box;
-	border-radius: 2px;
 }
-.row{
-	padding-bottom: 10px;
+
+
+body{
+	font-family: calibri;
+	background: linear-gradient(to right, #00e0fe, #1107ef);
 }
-.form-inline {
-	border: 1px solid #ccc;
-	padding: 8px 10px 4px;
-	border-radius: 10px;
+h1{
+	font-weight: bold;
+	text-align: center;
 }
-.form-inline label, .form-inline input{
-	display: inline-block;
-	width: auto;
-	padding-right: 15px;
+table{
+	font-size: 15px;
+	font-weight: bold;
+	border-collapse: collapse;
+	border: 2px solid navy;
 }
-.error{
-	color: red;
-	font-size: 90%;
-}
-input[type="submit"] {
-	font-size: 110%;
-	font-weight: 100;
-	background: #1107ef;
-	border-color: #016BC1;
-	box-shadow: 0 3px 0 #0165b6;
-	color: #fff;
-	cursor: pointer;
+.btn{
 	border-radius: 100px;
+	background: linear-gradient(to left, #00e0fe, #1107ef);
+	height: 30px;
+	width: 100px;
 }
-input[type="submit"] :hover {
-	background: #0165b6;
+
+@media screen and  (max-width: 900px)
+{
+	.container{
+		max-width: 850px;
+	}
 }
