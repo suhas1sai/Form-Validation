@@ -1,181 +1,183 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>JavaScript Form validation</title>
-<link rel="stylesheet" href="css/style.css">
-<script>
-// Defining a function to display error message
-function printError(elemId, hintMsg) {
-    document.getElementById(elemId).innerHTML = hintMsg;
-}
-
-
-    
-
-
-// Defining a function to validate form 
-function validateForm() {
-    // Retrieving the values of form elements 
-    var Fname = document.contactForm.fname.value;
-    var Lname = document.contactForm.lname.value;
-    var email = document.contactForm.email.value;
-    var mobile = document.contactForm.mobile.value;
-    var country = document.contactForm.country.value;
-    var gender = document.contactForm.gender.value;
-
-    
-    
-	// Defining error variables with a default value
-    var fnameErr = lnameErr = emailErr = mobileErr = countryErr = genderErr = true;
-    
-    // Validate name
-    if(Fname == "") {
-        printError("fnameErr", "Please enter First your name");
-    } else {
-        var regex = /^[a-zA-Z\s]+$/;                
-        if(regex.test(fname) === false) {
-            printError("fnameErr", "Please enter a valid name");
-        } else {
-            printError("fnameErr", "");
-            nameErr = false;
-        }
-    }
-
-    if(Lname == "") {
-        printError("lnameErr", "Please enter Last your name");
-    } else {
-        var regex = /^[a-zA-Z\s]+$/;                
-        if(regex.test(lname) === false) {
-            printError("lnameErr", "Please enter a valid name");
-        } else {
-            printError("lnameErr", "");
-            nameErr = false;
-        }
-    }
-    
-    // Validate email address
-    if(email == "") {
-        printError("emailErr", "Please enter your email address");
-    } else {
-        // Regular expression for basic email validation
-        var regex = /^\S+@\S+\.\S+$/;
-        if(regex.test(email) === false) {
-            printError("emailErr", "Please enter a valid email address");
-        } else{
-            printError("emailErr", "");
-            emailErr = false;
-        }
-    }
-    
-    // Validate mobile number
-    if(mobile == "") {
-        printError("mobileErr", "Please enter your mobile number");
-    } else {
-        var regex = /^[1-9]\d{9}$/;
-        if(regex.test(mobile) === false) {
-            printError("mobileErr", "Please enter a valid 10 digit mobile number");
-        } else{
-            printError("mobileErr", "");
-            mobileErr = false;
-        }
-    }
-    
-    // Validate country
-    if(country == "Select") {
-        printError("countryErr", "Please select your country");
-    } else {
-        printError("countryErr", "");
-        countryErr = false;
-    }
-    
-    // Validate gender
-    if(gender == "") {
-        printError("genderErr", "Please select your gender");
-    } else {
-        printError("genderErr", "");
-        genderErr = false;
-    }
-
-    if (!this.contactForm.checkboxa.checked) 
-    {
-        alert("Please agree the terms and conditions.");
-        return false;
-    }
-
-    
-    // Prevent the form from being submitted if there are any errors
-    if((nameErr || emailErr || mobileErr || countryErr || genderErr || checkErr) == true) {
-       return false;
-    } else {
-        // Creating a string from input data for preview
-        var dataPreview = "You've entered the following details: \n" +
-                          "Full Name: " + name + "\n" +
-                          "Email Address: " + email + "\n" +
-                          "Mobile Number: " + mobile + "\n" +
-                          "Country: " + country + "\n" +
-                          "Gender: " + gender + "\n";
-        // Display input data in a dialog box before submitting the form
-        alert(dataPreview);
-    }
-}
-
-
-
-</script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Registration Form</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body style="background-image: url(assets/images/art.gif); background-repeat: no-repeat; background-size: cover;">
-<form name="contactForm" onsubmit="return validateForm();" action="your registred.php" method="post">
-    <h2>Registration Form</h2>
-    <div class="row">
-        <label>First Name</label>
-        <input type="text" name="fname">
-        <div class="error" id="fnameErr"></div>
-    </div>
-    <div class="row">
-        <label>Last Name</label>
-        <input type="text" name="lname">
-        <div class="error" id="lnameErr"></div>
-    </div>
-    <div class="row">
-        <label>Email Address</label>
-        <input type="text" name="email">
-        <div class="error" id="emailErr"></div>
-    </div>
-    <div class="row">
-        <label>Mobile Number</label>
-        <input type="text" name="mobile" maxlength="10">
-        <div class="error" id="mobileErr"></div>
-    </div>
-    <div class="row">
-        <label>Country</label>
-        <select name="country">
-            <option>Select</option>
-            <option>Australia</option>
-            <option>India</option>
-            <option>United States</option>
-            <option>United Kingdom</option>
-        </select>
-        <div class="error" id="countryErr"></div>
-    </div>
-    <div class="row">
-        <label>Gender</label>
-        <div class="form-inline">
-            <label><input type="radio" name="gender" value="male"> Male</label>
-            <label><input type="radio" name="gender" value="female"> Female</label>
-        </div>
-        <div class="error" id="genderErr"></div>
-    </div>
-    <div class="row">
-        <label>Privacy Policy<i>(Tick the checkbox)</i></label>
-        <div class="form-inline">
-            <label><input type="checkbox" name="checkboxa" value="checkboxt"> I agree the terms and conditions</label>
-        </div>
-        <div class="error" id="checkErr"></div>
-    </div>
-    <div class="row">
-        <input type="submit" value="Submit">
-    </div>
-</form>
+<body>
+	<div class="container">
+	<h1>Registration Form</h1>
+	<form name="myform" method="post" onsubmit="return validate()">
+		<table align="center" cellpadding="10">
+			<tr>
+				<td>First Name</td>
+				<td><input type="text" name="fname" maxlength="30" placeholder="enter your First name"/></td>
+			</tr>
+			<tr>
+				<td>Middle Name</td>
+				<td><input type="text" name="mname" maxlength="30" placeholder="enter your Middle name" /></td>
+			</tr>
+			<tr>
+				<td>Last Name</td>
+				<td><input type="text" name="lname" maxlength="30" placeholder="enter your Last name" /></td>
+			</tr>
+			<tr>
+				<td>Date Of Birth</td>
+				<td><input type="date" name="date" id="date" min="1997-01-01"/></td>
+			</tr>
+			<tr>
+				<td>Gender</td>
+				<td>Male<input type="radio" name="gender" value="male">
+				    Female<input type="radio" name="gender" value="Female"></td>
+			</tr>
+			<tr>
+				<td>Coutry</td>
+				<td><select id="country" name="country">
+					<option value="select a country">Select a Country</option>
+					<option value="India">India</option>
+					<option value="Los Angles">Los Angles</option>
+					<option value="London">London</option>
+					<option value="Paris">Paris</option>
+					<option value="UK">U.K</option>
+					<option value="USA">U.S.A</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Mobile number</td>
+				<td><input type="text" name="phone" maxlength="10" placeholder="enter your Mobile number" /></td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td><input type="text" name="email" maxlength="100" placeholder="enter your Email address" /></td>
+			</tr>
+			<tr>
+				<td>Privacy Policy<i>(Tick the Checkbox)</i></td>
+				<td><input type="checkbox" name="check"  id="check" value="check">I agree the terms and conditions</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" value="submit" class="btn" />
+				</td>
+			</tr>
+
+		</table>
+	</form>
+	<script type="text/javascript">
+		
+		function validate()
+		{
+			var first= document.forms["myform"]["fname"].value;
+			var middle= document.forms["myform"]["mname"].value;
+			var last= document.forms["myform"]["lname"].value;
+			var date= document.forms["myform"]["date"].value;
+			var gender= document.forms["myform"]["gender"].value;
+			var country= document.forms["myform"]["country"].value;
+			var phone= document.forms["myform"]["phone"].value;
+			var email= document.forms["myform"]["email"].value;
+			var check= document.getElementById("check");
+
+			if (first == "") 
+			{
+				alert("Please enter your first name");
+				return false;
+			}
+
+			if (!isNaN(first)) 
+			{
+				alert("please enter valid first name");
+				return false;
+			}
+
+			if (!isNaN(middle)) 
+			{
+				alert("Please enter valid middle name");
+				return false;
+			}
+
+			if (last == "") 
+			{
+				alert("Please enter your last name");
+				return false;
+			}
+
+			if (!isNaN(last)) 
+			{
+				alert("Please enter valid last name")
+			}
+
+			if (date == "") 
+			{
+				alert("Please enter your Date of Birth");
+				return false;
+			}
+
+			if (gender == "") 
+			{
+				alert("Please select your gender");
+				return false;
+			}
+
+			if (country == "select a country") 
+			{
+				alert("Please select your country");
+				return false;
+			}
+
+			if (phone == "") 
+			{
+				alert("enter your mobile number");
+				return false;
+			}
+
+			if (isNaN(phone)) 
+			{
+				alert("enter the valid mobile nummber");
+				return false;
+			}
+
+			if (phone.length<10) 
+			{
+				alert("enter the 10 digits mobile nummber");
+				return false;
+			}
+
+			if (phone.length>10) 
+			{
+				alert("enter the 10 digits mobile number");
+				return false;
+			}
+
+			if (email == "") 
+			{
+				alert("Please enter your email address");
+				return false;
+			}
+
+			if (email.indexOf('@')<=0) 
+			{
+
+				alert("Invalid email address");
+				return false;
+			}
+
+			if (email.charAt(email.length-4)!='.')  
+			{
+				alert("Invalid email address");
+				return false;
+			}
+
+			if (!check.checked) 
+			{
+				alert("You agree the terms and conditions");
+				return false;
+			}
+
+		}
+	</script>
+</div>
 </body>
 </html>
