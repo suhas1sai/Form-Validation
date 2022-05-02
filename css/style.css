@@ -2,7 +2,6 @@
 	box-sizing: border-box;
 }
 
-
 body{
 	font-family: calibri;
 	background: linear-gradient(to right, #00e0fe, #1107ef);
@@ -14,6 +13,7 @@ h1{
 table{
 	font-size: 15px;
 	font-weight: bold;
+	background-color: lightseagreen;
 	border-collapse: collapse;
 	border: 2px solid navy;
 }
@@ -24,39 +24,4 @@ table{
 	width: 100px;
 }
 
-@media screen and  (max-width: 900px)
-{
-	.container{
-		max-width: 850px;
-	}
-}
 
-.container{
-  width: 100%;
-  margin: 3.2rem auto 0 auto;
-}
-
-@media(min-width: 576px){
-  .container{
-    max-width: 540px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-  }
-}
-
-@media(min-width: 768px){
-  .container{
-    max-width: 720px;
-    margin-right: auto;
-    margin-left: auto;
-    display: block;
-  }
-}
-
-@media(min-width: 280px) and (max-width320px)
-{
-	.container{
-		font-size: 10px;
-	}
-}
