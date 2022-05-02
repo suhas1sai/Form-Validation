@@ -9,7 +9,7 @@
 <body>
 	<div class="container">
 	<h1>Registration Form</h1>
-	<form name="myform" method="post" onsubmit="return validate()">
+	<form name="myform" method="post" onsubmit="return validate()" action="alert('approved the details')">
 		<table align="center" cellpadding="10">
 			<tr>
 				<td>First Name</td>
@@ -135,13 +135,13 @@
 
 			if (isNaN(phone)) 
 			{
-				alert("enter the valid mobile nummber");
+				alert("enter the valid mobile number");
 				return false;
 			}
 
 			if (phone.length<10) 
 			{
-				alert("enter the 10 digits mobile nummber");
+				alert("enter the 10 digits mobile number");
 				return false;
 			}
 
@@ -149,6 +149,12 @@
 			{
 				alert("enter the 10 digits mobile number");
 				return false;
+			} else {
+				var regex = /^[6-9]\d{9}$/;
+				if (regex.test(phone) === false) 
+				{
+					alert("Enter the valid mobile number");
+				}
 			}
 
 			if (email == "") 
@@ -176,6 +182,12 @@
 				return false;
 			}
 
+			
+
+
+                          
+                          
+                          
 		}
 	</script>
 </div>
